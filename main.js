@@ -56,16 +56,17 @@ const posts = [
     }
 ];
 
-const container = document.querySelector('.posts-list');
+let container = document.querySelector('.posts-list');
 let post;
 
 for (let index in posts){
     post = posts[index];
+
     printPost();
 }
 
 function printPost(){
-container.innerHTML = `
+container.innerHTML += `
 <div class="post">
             <div class="post__header">
                 <div class="post-meta">
