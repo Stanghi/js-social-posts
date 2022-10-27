@@ -58,11 +58,17 @@ const posts = [
 
 let container = document.querySelector('.posts-list');
 let post;
+let datePost;
 
 for (let index in posts){
     post = posts[index];
 
+    datePost = convertDigitIn(post.created);
     printPost();
+}
+
+function convertDigitIn(date){
+    return date.split('-').reverse().join('/');
 }
 
 function printPost(){
@@ -75,7 +81,7 @@ container.innerHTML += `
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${post.author.name}</div>
-                        <div class="post-meta__time">${post.created}</div>
+                        <div class="post-meta__time">${datePost}</div>
                     </div>
                 </div>
             </div>
