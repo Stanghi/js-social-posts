@@ -66,26 +66,22 @@ for (let index in posts){
     post = posts[index];
 
     datePost = convertDate(post.created);
-
-    if (!(post.author.image)){
-        controllImgUser();
-    }
-
+    //controllImgUser();
     printPost();
+}
+
+for(let i = 0; i < posts.length; i++){
+    if (!(posts[i].author.image)){
+        acronym = posts[i].author.name.split(' ').map(word => word[0]).toString().replace(",","");
+
+        const postMeta = document.getElementsByClassName('post-meta__icon');
+        postMeta[i].innerHTML = `${acronym}`;
+        postMeta[i].classList.add('profile-pic-default');
+    }
 }
 
 function convertDate(date){
     return date.split('-').reverse().join('/');
-}
-
-function controllImgUser(){
-    acronym = post.author.name.split(' ').map(word => word[0]).toString().replace(",","");
-    
-    const profilePic = document.querySelector('.profile-pic');
-    const span = document.createElement("span");
-    span.className = 'profile-pic-default';
-    span.innerHTML += `${acronym}`;
-    profilePic.replaceWith(span);
 }
 
 function printPost(){
@@ -121,3 +117,18 @@ container.innerHTML += `
             </div>
         </div>`;
 }
+
+/*
+// DA CHIEDERE
+function controllImgUser(){
+    if (!(post.author.image9){
+        acronym = post.author.name.split(' ').map(word => word[0]).toString().replace(",","");
+        
+        const profilePic = document.querySelector('.profile-pic');
+        const span = document.createElement("span");
+        span.className = 'profile-pic-default';
+        span.innerHTML += `${acronym}`;
+        profilePic.replaceWith(span);
+    }
+}
+*/
