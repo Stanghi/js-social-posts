@@ -56,19 +56,36 @@ const posts = [
     }
 ];
 
-let container = document.querySelector('.posts-list');
+const container = document.querySelector('.posts-list');
+
 let post;
 let datePost;
+let acronym;
 
 for (let index in posts){
     post = posts[index];
 
-    datePost = convertDigitIn(post.created);
+    datePost = convertDate(post.created);
+
+    if (!(post.author.image)){
+        controllImgUser();
+    }
+
     printPost();
 }
 
-function convertDigitIn(date){
+function convertDate(date){
     return date.split('-').reverse().join('/');
+}
+
+function controllImgUser(){
+    acronym = post.author.name.split(' ').map(word => word[0]).toString().replace(",","");
+    
+    const profilePic = document.querySelector('.profile-pic');
+    const span = document.createElement("span");
+    span.className = 'profile-pic-default';
+    span.innerHTML += `${acronym}`;
+    profilePic.replaceWith(span);
 }
 
 function printPost(){
