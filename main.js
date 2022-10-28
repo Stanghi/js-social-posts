@@ -78,7 +78,7 @@ for (let index in posts){
 
 for(let i = 0; i < posts.length; i++){
     if (!(posts[i].author.image)){
-        acronym = posts[i].author.name.split(' ').map(word => word[0]).toString().replace(",","");
+        acronym = posts[i].author.name.split(' ').map(word => word[0]).join('');
 
         const postMeta = document.getElementsByClassName('post-meta__icon');
         postMeta[i].innerHTML = `${acronym}`;
