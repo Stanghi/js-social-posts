@@ -59,12 +59,7 @@ const posts = [
 const container = document.querySelector('.posts-list');
 const btnLike = document.getElementsByClassName('like-button');
 
-let post;
-let datePost;
-let acronym;
-let id;
-let nLikes;
-
+let post, datePost, acronym, id, nLikes;
 
 for (let index in posts){
     post = posts[index];
